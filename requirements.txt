@@ -1,0 +1,10 @@
+streamlit
+llama-index
+llama-index-llms-azure-openai
+pandas
+PyPDF2
+python-docx
+pyvis
+networkx
+python-dotenv
+neo4j
