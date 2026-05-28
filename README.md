@@ -1,42 +1,94 @@
-# Knowledge Graph Builder
+# 🕸️ Knowledge Graph Builder (AI + Neo4j Desktop)
 
-Upload unstructured documents → extract entities & relationships via NLP → store as a graph in Neo4j → explore interactively.
+Upload unstructured documents → extract entities & relationships using LLM → build a knowledge graph → explore and query interactively.
 
-## Stack
-- **Frontend**: Streamlit
-- **NLP**: spaCy (`en_core_web_sm`)
-- **Graph DB**: Neo4j
-- **Visualization**: PyVis + NetworkX
+---
 
-## Setup
+## 🚀 Features
+- 📄 Upload documents (PDF, DOCX, CSV, TXT)
+- 🧠 AI-based entity & relationship extraction (LlamaIndex + Azure OpenAI)
+- 🔗 Automatic knowledge graph creation (triplets)
+- 🗄️ Graph storage using Neo4j Desktop
+- 📊 Interactive visualization (PyVis)
+- 💬 Ask questions over graph (Graph-based Q&A)
+- 📈 Graph analytics (NetworkX)
 
-```bash
-# 1. Install dependencies
+---
+
+## 🧰 Tech Stack
+- Frontend: Streamlit  
+- AI/NLP: LlamaIndex + Azure OpenAI  
+- File Processing: PyPDF2, python-docx, pandas  
+- Graph DB: Neo4j Desktop  
+- Visualization: PyVis, NetworkX  
+- Config: python-dotenv  
+
+---
+
+## ⚙️ Setup
+
+1. Create & Activate Virtual Environment
+python -m venv venv
+venv\Scripts\activate
+
+2. Install Dependencies
 pip install -r requirements.txt
 
-# 2. Download spaCy model
-python -m spacy download en_core_web_sm
+3. Configure Environment (.env)
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=your-password
+NEO4J_DATABASE=neo4j
+AZURE_OPENAI_API_KEY=your-api-key
+AZURE_OPENAI_ENDPOINT=your-endpoin
 
-# 3. Start Neo4j (Docker quickstart)
-docker run -p 7474:7474 -p 7687:7687 \
-  -e NEO4J_AUTH=neo4j/password \
-  neo4j:latest
+4. Start Neo4j Desktop
+Open Neo4j Desktop
+Create a Local DBMS (Project)
+Set username: neo4j and your password
+Start the database
 
-# 4. Run the app
-streamlit run app.py
-```
+5. Run the App
+python -m streamlit run app.py
 
-## Supported file types
-| Format | Notes |
-|--------|-------|
-| `.txt` | Plain text |
-| `.pdf` | Text-based PDFs |
-| `.docx` | Word documents |
-| `.csv`  | Tabular data (converted to text) |
+🧠 How It Works
+1.Extract text from uploaded file
+2.LLM processes text (Azure OpenAI)
+3.Extract entities & relationships
+4.Convert into triplets:
+(Subject, Relation, Object)
+5.Store graph in Neo4j using MERGE
+6.Visualize graph using PyVis
+7.Query graph using natural language
 
-## How it works
-1. Text is extracted from the uploaded file.
-2. spaCy NER identifies named entities (people, orgs, locations, dates, …).
-3. Dependency parsing extracts subject → verb → object triples as edges.
-4. Nodes and edges are stored in Neo4j via `MERGE` (idempotent).
-5. PyVis renders an interactive force-directed graph in the browser.
+🔍 Graph Exploration
+View nodes & edges
+Highlight connected nodes
+Filter relationships
+Analyze graph
+
+
+💬 Ask the Graph
+Ask:
+Who is the CEO of Microsoft?
+
+✔ Answer generated from structured graph
+
+⚡ Highlights
+
+Converts unstructured text → structured graph
+Uses LLM instead of rule-based NLP
+Graph-based Q&A (Graph RAG)
+Interactive visualization
+
+
+🚀 Future Improvements
+
+Add Cypher query UI
+Multi-document linking
+Cloud deployment
+Semantic graph search
+
+
+📌 Author
+Rohan krishna R s
