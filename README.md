@@ -54,12 +54,18 @@ python -m streamlit run app.py
 🧠 How It Works
 
 1.Extract text from uploaded file
+
 2.LLM processes text (Azure OpenAI)
+
 3.Extract entities & relationships
+
 4.Convert into triplets:
 (Subject, Relation, Object)
+
 5.Store graph in Neo4j using MERGE
+
 6.Visualize graph using PyVis
+
 7.Query graph using natural language
 
 🔍 Graph Exploration
