@@ -52,6 +52,7 @@ Start the database
 python -m streamlit run app.py
 
 🧠 How It Works
+
 1.Extract text from uploaded file
 2.LLM processes text (Azure OpenAI)
 3.Extract entities & relationships
